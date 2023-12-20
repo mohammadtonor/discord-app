@@ -136,14 +136,16 @@ model Conversation {
 
 model DirectMessage {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  contnt String @db.String
-  fileUrl String @db.String
+  content String @db.String
+  fileUrl String? @db.String
 
   memberId String @db.ObjectId
   member Member @relation(fields: [memberId], references: [id], onDelete: Cascade )
 
   conversationId String @db.ObjectId
   conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+deleted Boolean @default(false)
 
   createdAt DateTime @default(now())
    updatedAt DateTime @updatedAt

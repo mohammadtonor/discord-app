@@ -4,6 +4,7 @@ import { type } from "os";
 import { MobileToggle } from "../mobile-toggle";
 import { UserAvatar } from "../user-avatar";
 import { SocketIndicator } from "../socket-indicator";
+import { ChatVideoButtun } from "./chat-video-button";
 
 interface ChatHeaderProps {
   ServerId: string;
@@ -31,6 +32,7 @@ export const ChatHeader = ({
       )}
       <p className="font-semibold text-md text-black dark:text-white">{name}</p>
       <div className="flex ml-auto items-center">
+        {type === "conversation" && <ChatVideoButtun />}
         <SocketIndicator />
       </div>
     </div>
